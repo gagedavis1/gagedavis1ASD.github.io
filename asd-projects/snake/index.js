@@ -1,4 +1,3 @@
-
 /* global $, sessionStorage*/
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +37,18 @@ var activeKey;
 
 // TODO: turn on keyboard inputs
 $("body").on("keydown", handleKeyDown);
+
+// Apply purple background to the entire webpage
+$("body").css("background-color", "purple");
+
+// Keep game board's background as is
+board.css("background-color", "black");
+
+
+
+// Makes text fancy
+scoreElement.css({ "font-family": "'Comic Sans MS', cursive, sans-serif", "color": "white" }); 
+highScoreElement.css({ "font-family": "'Comic Sans MS', cursive, sans-serif", "color": "white" }); 
 
 // start the game
 init();
@@ -288,8 +299,8 @@ function makeSnakeSquare(row, column) {
   // make the snakeSquare.element Object and append it to the board
   snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
 
-  // Change the snake's color dynamically
-  snakeSquare.element.css("background-color", "#fcba03"); // makes the snake yellow
+  // Change the snake's color
+  snakeSquare.element.css("background-color", "#fcd703"); //makes snake yellow
 
   // initialize the row and column properties on the snakeSquare Object
   snakeSquare.row = row;
@@ -304,9 +315,7 @@ function makeSnakeSquare(row, column) {
   }
 
   // add snakeSquare to the end of the body Array and set it as the new tail
-  snake.body.push
-
-(snakeSquare);
+  snake.body.push(snakeSquare);
   snake.tail = snakeSquare;
 }
 
@@ -383,7 +392,7 @@ function calculateHighScore() {
   if (score > highScore) {
     sessionStorage.setItem("highScore", score);
     highScore = score;
-    alert("Good job sport, want a trophie?");
+    alert("What, you wanna trophie or something?");
   }
 
   return highScore;
